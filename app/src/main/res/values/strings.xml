@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Macaron</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_feed">Feed</string>
+    <string name="title_myRecipes">Minhas Receitas</string>
+    <string name="title_myIngredients">Meus Ingredientes</string>
+    <string name="title_perfil">Perfil</string>
+    <string name="title_activity_dashboard">MainActivity</string>
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_feed"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_feed" />
+
+    <item
+        android:id="@+id/navigation_myrecipes"
+        android:icon="@drawable/ic_my_recipes_24"
+        android:title="@string/title_myRecipes" />
+
+    <item
+        android:id="@+id/navigation_myingredients"
+        android:icon="@drawable/ic_my_ingredients_24"
+        android:title="@string/title_myIngredients" />
+
+    <item
+        android:id="@+id/navigation_perfil"
+        android:icon="@drawable/ic_perfil_24"
+        android:title="@string/title_perfil" />
+
+</menu>

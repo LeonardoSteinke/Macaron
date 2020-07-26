@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnSignUp;
@@ -17,16 +18,26 @@ public class MainActivity extends AppCompatActivity {
     EditText edtPassword;
     ImageView imgLogo;
 
+    Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_in);
         initComponents();
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SignUpActivity.class);
+                i = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i = new Intent(MainActivity.this, DashboardActivity.class);
                 startActivity(i);
             }
         });
