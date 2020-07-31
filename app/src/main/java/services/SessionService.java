@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 public interface SessionService {
 
     @POST("session")
-    Call<Usuario> requestJson(@Body RequestBody object);
+    Call<Usuario> login(@Body Usuario object);
 
     @GET("usuario")
     Call<Usuario> getAllUsers();

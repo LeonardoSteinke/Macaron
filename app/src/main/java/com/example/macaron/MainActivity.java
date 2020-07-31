@@ -2,16 +2,11 @@ package com.example.macaron;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
-
 import model.Usuario;
 import retrofit.RetrofitInitializer;
 import retrofit2.Call;
@@ -36,21 +31,37 @@ public class MainActivity extends AppCompatActivity {
         initComponents();
 
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                i = new Intent(MainActivity.this, SignUpActivity.class);
-                startActivity(i);
-            }
+        btnSignIn.setOnClickListener(v -> {
+
+            Usuario u = new Usuario();
+            u.setEmail(edtUsername.getText().toString());
+            u.setSenha(edtPassword.getText().toString());
+            Call<Usuario> call = new RetrofitInitializer().setSession().login(u);
+            call.enqueue(new Callback<Usuario>() {
+                @Override
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+                    if (response.body().getEmail().equalsIgnoreCase(u.getEmail())) {
+                        i = new Intent(MainActivity.this, DashboardActivity.class);
+                        startActivity(i);
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Usuario> call, Throwable t) {
+                    Toast.makeText(MainActivity.this, "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                i = new Intent(MainActivity.this, DashboardActivity.class);
-                startActivity(i);
-            }
+
+        btnSignUp.setOnClickListener(v -> {
+            i = new Intent(MainActivity.this, SignUpActivity.class);
+            startActivity(i);
         });
+
 
     }
 
