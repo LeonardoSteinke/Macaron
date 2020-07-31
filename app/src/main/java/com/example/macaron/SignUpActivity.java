@@ -3,6 +3,7 @@ package com.example.macaron;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +52,8 @@ public class SignUpActivity extends AppCompatActivity {
                         dialog.hide();
                         if (response.body().getId() != 0) {
                             u.setId(response.body().getId());
-
+                            Intent i = new Intent(SignUpActivity.this, DashboardActivity.class);
+                            startActivity(i);
                             progressBar.setVisibility(View.INVISIBLE);
                         } else {
                             progressBar.setVisibility(View.INVISIBLE);

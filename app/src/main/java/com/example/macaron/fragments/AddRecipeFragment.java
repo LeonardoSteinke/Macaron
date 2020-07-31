@@ -1,10 +1,12 @@
 package com.example.macaron.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +38,8 @@ public class AddRecipeFragment extends Fragment {
     private EditText edtModopreparo;
     View view;
 
+    ProgressDialog dialog;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class AddRecipeFragment extends Fragment {
         initComponents();
 
         btnCadastrarReceita.setOnClickListener(v -> {
+            dialog.show();
             try {
                 Receita receita = new Receita();
                 receita.setNome(edtNome.getText().toString());
@@ -52,25 +57,25 @@ public class AddRecipeFragment extends Fragment {
                 receita.setCategoria(spnCategoria.getSelectedItem().toString());
                 receita.setTipo(spnTipo.getSelectedItemPosition());
                 receita.setModo_preparo(edtModopreparo.getText().toString());
-                Log.i("testes", receita.getModo_preparo());
+                receita.setId_usuario(1);
                 Call<Receita> call = new RetrofitInitializer().setReceitaService().cadastrarReceita(receita);
                 call.enqueue(new Callback<Receita>() {
                     @Override
                     public void onResponse(Call<Receita> call, Response<Receita> response) {
-
-                        
+                        dialog.hide();
                         getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyRecipesFragment()).commit();
                     }
 
                     @Override
                     public void onFailure(Call<Receita> call, Throwable t) {
-
+                        dialog.hide();
+                        Log.i("testes", "deu algum erro no cadastro de receita");
                     }
                 });
 
 
             } catch (Exception e) {
-
+                dialog.hide();
                 Toast.makeText(getContext(), "Verifique todos os campos", Toast.LENGTH_SHORT).show();
             }
 
@@ -100,7 +105,15 @@ public class AddRecipeFragment extends Fragment {
 
         btnCadastrarReceita = view.findViewById(R.id.btnCadastrarReceita);
 
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("Conectando com o servidor");
+        dialog.setCancelable(false);
+        dialog.setInverseBackgroundForced(false);
+
+
     }
+
+
 
 
 }

@@ -15,6 +15,9 @@ public interface ReceitaService {
     @GET("receita/{id}")
     Call<Receita> select(@Path("id") int id);
 
+    @GET("receita")
+    Call<List<Receita>> select();
+
     @POST("/receita")
     Call<Receita> cadastrarReceita(@Body Receita receita);
 
