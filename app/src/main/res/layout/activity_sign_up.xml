@@ -7,7 +7,6 @@
     tools:context=".SignUpActivity"
     android:background="@color/colorPrimary">
 
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -26,6 +25,8 @@
         android:id="@+id/edtNameSignUp"
         android:layout_width="260dp"
         android:layout_height="45dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
@@ -34,7 +35,6 @@
         android:fontFamily="@font/roboto_bold"
         android:hint="Digite seu Nome"
         android:inputType="textPersonName"
-        android:paddingLeft="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -54,7 +54,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNameSignUp"
-        android:paddingLeft="12dp"/>
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"/>
 
     <EditText
         android:id="@+id/edtSenhaSignUp"
@@ -67,11 +68,12 @@
         android:ems="10"
         android:fontFamily="@font/roboto_bold"
         android:hint="Digite sua senha"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail"
-        android:paddingLeft="12dp"/>
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"/>
 
     <EditText
         android:id="@+id/edtSenha2SignUp"
@@ -84,24 +86,38 @@
         android:ems="10"
         android:fontFamily="@font/roboto_bold"
         android:hint="Repita a senha"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSenhaSignUp"
-        android:paddingLeft="12dp"/>
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"/>
 
-    <Button
-        android:id="@+id/btnCadastro"
+<!--    <Button-->
+<!--        android:id="@+id/btnCadastro"-->
+<!--        android:layout_width="140dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="110dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="110dp"-->
+<!--        android:background="@drawable/rouded_button"-->
+<!--        android:fontFamily="@font/roboto_bold"-->
+<!--        android:text="Registrar-se"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/edtSenha2SignUp"-->
+<!--        ></Button>-->
+    <include
+        android:id="@+id/btnRegistrar"
+        layout="@layout/progress_button"
         android:layout_width="140dp"
         android:layout_height="40dp"
         android:layout_marginStart="110dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="110dp"
-        android:background="@drawable/rouded_button"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Registrar-se"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSenha2SignUp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

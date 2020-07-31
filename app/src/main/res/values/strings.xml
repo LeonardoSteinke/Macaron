@@ -6,4 +6,36 @@
     <string name="title_myIngredients">Meus Ingredientes</string>
     <string name="title_perfil">Perfil</string>
     <string name="title_activity_dashboard">MainActivity</string>
+
+    <string-array name="Categorias_comidas">
+        <item>Aves</item>
+        <item>Bebidas</item>
+        <item>Bolos e Tortas</item>
+        <item>Carnes</item>
+        <item>Doces</item>
+        <item>Frutos do mar</item>
+        <item>Lanches</item>
+        <item>Massas</item>
+        <item>Saladas e molhos</item>
+        <item>Saudável</item>
+        <item>Sopas</item>
+    </string-array>
+
+    <string-array name="dificuldade_comidas">
+        <item>1 (Fácil)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5 (Difícil)</item>
+
+    </string-array>
+
+    <string-array name="tipos_comidas">
+        <item>Livre</item>
+        <item>Vegetariano</item>
+        <item>Vegano</item>
+        <item>Sem glútem</item>
+        <item>Sem lactose</item>
+        <item>Sem glútem e lactose</item>
+    </string-array>
 </resources>
