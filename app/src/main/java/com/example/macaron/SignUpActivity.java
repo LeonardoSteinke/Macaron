@@ -26,6 +26,8 @@ public class SignUpActivity extends AppCompatActivity {
     EditText edtSenhaRepeat;
     Button btn;
     ProgressBar progressBar;
+    ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
         btn.setOnClickListener(v -> {
             if (edtSenha.getText().toString().equals(edtSenhaRepeat.getText().toString())) {
                 progressBar.setVisibility(View.VISIBLE);
+                dialog.show();
+
                 Usuario u = new Usuario();
                 u.setNome(edtNome.getText().toString());
                 u.setEmail(edtEmail.getText().toString());
@@ -44,7 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Usuario>() {
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-
+                        dialog.hide();
                         if (response.body().getId() != 0) {
                             u.setId(response.body().getId());
 
@@ -59,13 +63,14 @@ public class SignUpActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
-
+                        dialog.hide();
                         Log.i("testes", "Deu erro");
                     }
                 });
 
 
             } else {
+                dialog.hide();
                 Toast.makeText(getApplicationContext(), "Senhas não conferem", Toast.LENGTH_SHORT).show();
             }
         });
@@ -79,7 +84,14 @@ public class SignUpActivity extends AppCompatActivity {
         edtSenhaRepeat = findViewById(R.id.edtSenha2SignUp);
         btn = findViewById(R.id.progressButton);
         progressBar = findViewById(R.id.progressBar);
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Conectando com o servidor");
+        dialog.setCancelable(false);
+        dialog.setInverseBackgroundForced(false);
+
     }
+
+
 
 
 }

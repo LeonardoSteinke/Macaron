@@ -1,5 +1,6 @@
 package com.example.macaron;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtUsername;
     EditText edtPassword;
     ImageView imgLogo;
+    ProgressDialog dialog;
 
     Intent i;
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnSignIn.setOnClickListener(v -> {
-
+            dialog.show();
             Usuario u = new Usuario();
             u.setEmail(edtUsername.getText().toString());
             u.setSenha(edtPassword.getText().toString());
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
                     if (response.body().getEmail().equalsIgnoreCase(u.getEmail())) {
+                        dialog.hide();
                         i = new Intent(MainActivity.this, DashboardActivity.class);
                         startActivity(i);
 
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Usuario> call, Throwable t) {
+                    dialog.hide();
                     Toast.makeText(MainActivity.this, "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -73,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         imgLogo = findViewById(R.id.imgLogo);
         imgLogo.setImageResource(R.mipmap.logo_foreground);
-
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Conectando com o servidor");
+        dialog.setCancelable(false);
+        dialog.setInverseBackgroundForced(false);
     }
 }

@@ -166,13 +166,13 @@
         android:id="@+id/btnCadastrarReceita"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="44dp"
         android:background="@drawable/rouded_button"
         android:fontFamily="@font/roboto_bold"
         android:text="Próximo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnTipo" />
+        app:layout_constraintTop_toBottomOf="@+id/edtModoPreparo" />
 
     <TextView
         android:id="@+id/textView12"
@@ -185,5 +185,35 @@
         android:textColor="@color/texts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/edtModoPreparo"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_edit_text"
+        android:ems="10"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:padding="12dp"
+        android:textColor="@color/texts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Modo de preparo"
+        android:textColor="@color/texts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spnCategoria" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

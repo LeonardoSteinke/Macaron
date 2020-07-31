@@ -1,6 +1,7 @@
 package com.example.macaron.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,15 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.macaron.MainActivity;
 import com.example.macaron.R;
 
 import model.Receita;
+import retrofit.RetrofitInitializer;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddRecipeFragment extends Fragment {
 
@@ -27,6 +33,7 @@ public class AddRecipeFragment extends Fragment {
     private EditText edtNome;
     private EditText edtPorcoes;
     private EditText edtTempoPreparo;
+    private EditText edtModopreparo;
     View view;
 
     @Nullable
@@ -35,10 +42,8 @@ public class AddRecipeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_add_recipe, container, false);
         initComponents();
 
-
-        btnCadastrarReceita.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnCadastrarReceita.setOnClickListener(v -> {
+            try {
                 Receita receita = new Receita();
                 receita.setNome(edtNome.getText().toString());
                 receita.setTempo_preparo(Integer.parseInt(edtTempoPreparo.getText().toString()));
@@ -46,8 +51,27 @@ public class AddRecipeFragment extends Fragment {
                 receita.setPorcoes(Integer.parseInt(edtPorcoes.getText().toString()));
                 receita.setCategoria(spnCategoria.getSelectedItem().toString());
                 receita.setTipo(spnTipo.getSelectedItemPosition());
+                receita.setModo_preparo(edtModopreparo.getText().toString());
+                Log.i("testes", receita.getModo_preparo());
+                Call<Receita> call = new RetrofitInitializer().setReceitaService().cadastrarReceita(receita);
+                call.enqueue(new Callback<Receita>() {
+                    @Override
+                    public void onResponse(Call<Receita> call, Response<Receita> response) {
+
+                        
+                        getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyRecipesFragment()).commit();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Receita> call, Throwable t) {
+
+                    }
+                });
 
 
+            } catch (Exception e) {
+
+                Toast.makeText(getContext(), "Verifique todos os campos", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -72,6 +96,7 @@ public class AddRecipeFragment extends Fragment {
         edtNome = view.findViewById(R.id.edtNomeReceita);
         edtPorcoes = view.findViewById(R.id.edtPorcoes);
         edtTempoPreparo = view.findViewById(R.id.edtTempoDePreparo);
+        edtModopreparo = view.findViewById(R.id.edtModoPreparo);
 
         btnCadastrarReceita = view.findViewById(R.id.btnCadastrarReceita);
 
