@@ -1,13 +1,26 @@
 package model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Usuario {
+    @PrimaryKey
     private int id;
+    @ColumnInfo(name = "nome")
     private String nome;
+    @ColumnInfo(name = "email")
     private String email;
+    @ColumnInfo(name = "senha")
     private String senha;
+    @ColumnInfo(name = "uf")
     private String uf;
+    @ColumnInfo(name = "pais")
     private String pais;
+    @ColumnInfo(name = "foto")
     private String foto;
+    @ColumnInfo(name = "tolerancias")
     private int tolerancias;
     private String created_at;
     private String updated_at;

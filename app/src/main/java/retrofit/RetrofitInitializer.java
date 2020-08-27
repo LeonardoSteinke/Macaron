@@ -1,6 +1,5 @@
 package retrofit;
 
-import model.Receita;
 import retrofit2.converter.gson.GsonConverterFactory;
 import services.ReceitaService;
 import services.SessionService;

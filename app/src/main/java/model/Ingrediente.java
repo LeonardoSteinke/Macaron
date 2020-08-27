@@ -1,10 +1,19 @@
 package model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Ingrediente {
 
+    @PrimaryKey
     private int id;
+    @ColumnInfo(name = "nome")
     private String nome;
+    @ColumnInfo(name = "quantidade")
     private float quantidade;
+    @ColumnInfo(name = "unidadeMedida")
     private int unidadeMedida;
 
     public Ingrediente() {
