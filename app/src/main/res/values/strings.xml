@@ -38,4 +38,56 @@
         <item>Sem lactose</item>
         <item>Sem glútem e lactose</item>
     </string-array>
+
+    <string-array name="ingredientes">
+        <item>Azeitona</item>
+        <item>Sal</item>
+        <item>Alho</item>
+        <item>Louro</item>
+        <item>Molho inglês</item>
+        <item>Pimenta do reino preta</item>
+        <item>Pimenta do reino branca</item>
+        <item>Pimenta malagueta</item>
+        <item>Açafrão</item>
+        <item>Molho de soja</item>
+        <item>Alecrim</item>
+        <item>Tomilho</item>
+        <item>Noz moscada</item>
+        <item>Pimenta calabresa </item>
+        <item>Curry</item>
+        <item>Óleo</item>
+        <item>Azeite</item>
+        <item>Vinagre de vinho tinto</item>
+        <item>Vinagre de vinho branco</item>
+        <item>Mel</item>
+        <item>Farinha de trigo</item>
+        <item>Leite</item>
+        <item>Manteiga</item>
+        <item>Queijo</item>
+        <item>Ovo</item>
+        <item>Limão</item>
+        <item>Tomate</item>
+        <item>Cenoura</item>
+        <item>Batata</item>
+        <item>Cebola</item>
+        <item>Bacon</item>
+        <item>Mostarda</item>
+        <item>Molho de tomate</item>
+        <item>Caldo caseiro</item>
+        <item>Peito de frango</item>
+        <item>Coxa de frango</item>
+        <item>Filé de peixe</item>
+        <item>Camarão</item>
+        <item>Açúcar</item>
+        <item>Amido de milho</item>
+        <item>Arroz</item>
+        <item>Feijão</item>
+        <item>Milho em lata</item>
+        <item>Creme de leite</item>
+        <item>Palito</item>
+        <item>Guardanapo</item>
+        <item>Filtro plástico</item>
+        <item>Papel alumínio</item>
+        <item>Papel toalha</item>
+    </string-array>
 </resources>

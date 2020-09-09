@@ -1,6 +1,8 @@
 package retrofit;
 
+import model.Ingrediente;
 import retrofit2.converter.gson.GsonConverterFactory;
+import services.IngredienteReceitaService;
 import services.ReceitaService;
 import services.SessionService;
 import services.UsuarioService;
@@ -31,6 +33,10 @@ public class RetrofitInitializer {
 
     public ReceitaService setReceitaService() {
         return retrofit.create(ReceitaService.class);
+    }
+
+    public IngredienteReceitaService setIngredienteReceitaService() {
+        return retrofit.create(IngredienteReceitaService.class);
     }
 
 

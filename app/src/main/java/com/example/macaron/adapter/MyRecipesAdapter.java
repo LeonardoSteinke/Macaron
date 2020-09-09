@@ -25,7 +25,6 @@ public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.MyVi
     public MyRecipesAdapter(Context ct, List<Receita> receitas) {
         context = ct;
         this.receitas = receitas;
-
     }
 
     @NonNull

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
@@ -40,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "dbMacaron").allowMainThreadQueries().build();
         try {
-        List<Usuario> userList = db.usuarioDao().getAll();
-            for (Usuario user: userList) {
-            if(user != null){
-                i = new Intent(MainActivity.this, DashboardActivity.class);
-                startActivity(i);
-            }
+            List<Usuario> userList = db.usuarioDao().getAll();
+            for (Usuario user : userList) {
+                if (user != null) {
+                    i = new Intent(MainActivity.this, DashboardActivity.class);
+                    startActivity(i);
+                }
             }
         } catch (Exception e) {
             Log.i("testes", "deu erro no banco");
