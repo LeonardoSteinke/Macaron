@@ -18,6 +18,9 @@ public interface ReceitaService {
     @GET("receita")
     Call<List<Receita>> select();
 
+    @GET("receita/{nome}")
+    Call<List<Receita>> findByName(@Path("nome") String nome);
+
     @POST("/receita")
     Call<Receita> cadastrarReceita(@Body Receita receita);
 

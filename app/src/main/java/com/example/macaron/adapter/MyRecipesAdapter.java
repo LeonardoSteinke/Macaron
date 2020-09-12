@@ -21,6 +21,15 @@ public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.MyVi
 
     Context context;
     List<Receita> receitas;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public MyRecipesAdapter(Context ct, List<Receita> receitas) {
         context = ct;
@@ -32,7 +41,7 @@ public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.MyVi
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recipes_card, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, listener);
     }
 
     @Override
@@ -42,6 +51,7 @@ public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.MyVi
         holder.txtDificuldade.setText("Dificuldade: " + receitas.get(position).getDificuldade());
         //Picasso.get().load(users.get(position).getAvatar_url()).into(holder.img);
     }
+
 
     @Override
     public int getItemCount() {
@@ -54,12 +64,23 @@ public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.MyVi
         TextView txtDificuldade;
         ImageView img;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             txtName = itemView.findViewById(R.id.txtName);
             txtTempo = itemView.findViewById(R.id.txtTempo);
             txtDificuldade = itemView.findViewById(R.id.txtDificuldade);
             img = itemView.findViewById(R.id.imgComida);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick((position));
+                        }
+                    }
+                }
+            });
         }
     }
 }

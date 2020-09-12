@@ -34,16 +34,19 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
     }
 
 
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.add_ingredients_card, parent, false);
-        return new MyViewHolder(view);
+        MyViewHolder mvh = new MyViewHolder(view);
+        return mvh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
      //   ingredientes.get(position).setNome(holder.spnIngredientes.getSelectedItem().toString());
       //  ingredientes.get(position).setQuantidade(Integer.parseInt(holder.edtQuantidade.getText().toString()));
     }
@@ -77,8 +80,8 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        Spinner spnIngredientes;
-        EditText edtQuantidade;
+        public Spinner spnIngredientes;
+        public EditText edtQuantidade;
 
 
         public MyViewHolder(@NonNull View itemView) {

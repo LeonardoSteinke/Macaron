@@ -40,54 +40,54 @@
     </string-array>
 
     <string-array name="ingredientes">
-        <item>Azeitona</item>
-        <item>Sal</item>
-        <item>Alho</item>
-        <item>Louro</item>
-        <item>Molho inglês</item>
-        <item>Pimenta do reino preta</item>
-        <item>Pimenta do reino branca</item>
-        <item>Pimenta malagueta</item>
-        <item>Açafrão</item>
-        <item>Molho de soja</item>
         <item>Alecrim</item>
-        <item>Tomilho</item>
-        <item>Noz moscada</item>
-        <item>Pimenta calabresa </item>
-        <item>Curry</item>
-        <item>Óleo</item>
-        <item>Azeite</item>
-        <item>Vinagre de vinho tinto</item>
-        <item>Vinagre de vinho branco</item>
-        <item>Mel</item>
-        <item>Farinha de trigo</item>
-        <item>Leite</item>
-        <item>Manteiga</item>
-        <item>Queijo</item>
-        <item>Ovo</item>
-        <item>Limão</item>
-        <item>Tomate</item>
-        <item>Cenoura</item>
-        <item>Batata</item>
-        <item>Cebola</item>
-        <item>Bacon</item>
-        <item>Mostarda</item>
-        <item>Molho de tomate</item>
-        <item>Caldo caseiro</item>
-        <item>Peito de frango</item>
-        <item>Coxa de frango</item>
-        <item>Filé de peixe</item>
-        <item>Camarão</item>
-        <item>Açúcar</item>
+        <item>Alho</item>
         <item>Amido de milho</item>
         <item>Arroz</item>
-        <item>Feijão</item>
-        <item>Milho em lata</item>
+        <item>Azeite</item>
+        <item>Azeitona</item>
+        <item>Açafrão</item>
+        <item>Açúcar</item>
+        <item>Bacon</item>
+        <item>Batata</item>
+        <item>Caldo caseiro</item>
+        <item>Camarão</item>
+        <item>Cebola</item>
+        <item>Cenoura</item>
+        <item>Coxa de frango</item>
         <item>Creme de leite</item>
-        <item>Palito</item>
-        <item>Guardanapo</item>
+        <item>Curry</item>
+        <item>Farinha de trigo</item>
+        <item>Feijão</item>
+        <item>Filé de peixe</item>
         <item>Filtro plástico</item>
+        <item>Guardanapo</item>
+        <item>Leite</item>
+        <item>Limão</item>
+        <item>Louro</item>
+        <item>Manteiga</item>
+        <item>Mel</item>
+        <item>Milho em lata</item>
+        <item>Molho de soja</item>
+        <item>Molho de tomate</item>
+        <item>Molho inglês</item>
+        <item>Mostarda</item>
+        <item>Noz moscada</item>
+        <item>Óleo</item>
+        <item>Ovo</item>
+        <item>Palito</item>
         <item>Papel alumínio</item>
         <item>Papel toalha</item>
+        <item>Peito de frango</item>
+        <item>Pimenta calabresa </item>
+        <item>Pimenta do reino branca</item>
+        <item>Pimenta do reino preta</item>
+        <item>Pimenta malagueta</item>
+        <item>Queijo</item>
+        <item>Sal</item>
+        <item>Tomate</item>
+        <item>Tomilho</item>
+        <item>Vinagre de vinho branco</item>
+        <item>Vinagre de vinho tinto</item>
     </string-array>
 </resources>

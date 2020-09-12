@@ -29,6 +29,7 @@ public class MyRecipesFragment extends Fragment {
     private View view;
     private RecyclerView recyclerView;
     private List<Receita> receitaList;
+    private MyRecipesAdapter myAdapter;
 
     @Nullable
     @Override
@@ -41,42 +42,54 @@ public class MyRecipesFragment extends Fragment {
     }
 
     private void initComponents() {
+        btn = view.findViewById(R.id.btnAddRecipe);
+        recyclerView = view.findViewById(R.id.myRecipesRecycler);
         Call<List<Receita>> call = new RetrofitInitializer().setReceitaService().select();
         call.enqueue(new Callback<List<Receita>>() {
             @Override
             public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
                 receitaList = response.body();
-
-                btn = view.findViewById(R.id.btnAddRecipe);
-                recyclerView = view.findViewById(R.id.myRecipesRecycler);
-
-                try {
-                    MyRecipesAdapter myAdapter = new MyRecipesAdapter(getContext(), receitaList);
-                    recyclerView.setAdapter(myAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-                } catch (Exception e) {
-
-                }
-                btn.setOnClickListener(v -> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddRecipeFragment()).commit());
+                buildRecyclerView();
             }
 
             @Override
             public void onFailure(Call<List<Receita>> call, Throwable t) {
-                btn = view.findViewById(R.id.btnAddRecipe);
-                recyclerView = view.findViewById(R.id.myRecipesRecycler);
-
-                try {
-                    MyRecipesAdapter myAdapter = new MyRecipesAdapter(getContext(), receitaList);
-                    recyclerView.setAdapter(myAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-                } catch (Exception e) {
-
-                }
-                btn.setOnClickListener(v -> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddRecipeFragment()).commit());
+                buildRecyclerView();
             }
         });
 
+    }
+
+    public void buildRecyclerView() {
+        try {
+            myAdapter = new MyRecipesAdapter(getContext(), receitaList);
+            recyclerView.setAdapter(myAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            myAdapter.setOnItemClickListener(new MyRecipesAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    Receita receita = receitaList.get(position);
+                    RecipeFragment myFrag = new RecipeFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", receita.getId_usuario());
+                    bundle.putString("Nome", receita.getNome());
+                    bundle.putInt("Tempo", receita.getTempo_preparo());
+                    bundle.putInt("Dificuldade", receita.getDificuldade());
+                    bundle.putInt("Porcoes", receita.getPorcoes());
+                    bundle.putString("Categoria", receita.getCategoria());
+                    bundle.putInt("Tipo", receita.getTipo());
+                    bundle.putString("ModoPreparo", receita.getModo_preparo());
+                    myFrag.setArguments(bundle);
+
+                    getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, myFrag).commit();
+
+
+                }
+            });
+
+        } catch (Exception e) {
+
+        }
+        btn.setOnClickListener(v -> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddRecipeFragment()).commit());
     }
 }

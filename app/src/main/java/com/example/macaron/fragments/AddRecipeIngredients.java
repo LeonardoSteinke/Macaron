@@ -1,6 +1,5 @@
 package com.example.macaron.fragments;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,28 +34,27 @@ public class AddRecipeIngredients extends Fragment {
 
 
     private RecyclerView recyclerView;
-    private List<Ingrediente> ingredienteList = new ArrayList<>();
+    private List<Ingrediente> ingredienteList;
     private TextView btn;
     private ImageButton btnConfirmar;
+    RecipeIngredientsAdapter myAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_add_recipe_ingredient, container, false);
         initComponents();
-        Ingrediente ingrediente;
-        ingrediente = new Ingrediente();
-        ingredienteList.add(ingrediente);
-        recyclerView = view.findViewById(R.id.myRecipesRecycler);
-        RecipeIngredientsAdapter myAdapter = new RecipeIngredientsAdapter(getContext(), ingredienteList);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
+
+        createList();
+        buildRecyclerView();
+
 
         btn.setOnClickListener(view -> {
-            ingredienteList.add(new Ingrediente());
-            recyclerView.setAdapter(new RecipeIngredientsAdapter(getContext(), ingredienteList));
-            recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
-            System.out.println("cliquei no +");
+            insertItem();
+//            ingredienteList.add(new Ingrediente());
+//            recyclerView.setAdapter(new RecipeIngredientsAdapter(getContext(), ingredienteList));
+//            recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
+//            System.out.println("cliquei no +");
         });
 
         btnConfirmar.setOnClickListener(view -> {
@@ -79,13 +77,13 @@ public class AddRecipeIngredients extends Fragment {
                 @Override
                 public void onResponse(Call<Receita> call, Response<Receita> response) {
 
-                   // dialog.hide();
+                    // dialog.hide();
                     getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyRecipesFragment()).commit();
                 }
 
                 @Override
                 public void onFailure(Call<Receita> call, Throwable t) {
-                   // dialog.hide();
+                    // dialog.hide();
                     Log.i("testes", "deu algum erro no cadastro de receita");
                 }
             });
@@ -93,6 +91,28 @@ public class AddRecipeIngredients extends Fragment {
 
         return view;
     }
+
+    public void insertItem() {
+        ingredienteList.add(new Ingrediente());
+        myAdapter.notifyItemInserted(ingredienteList.size());
+    }
+
+    public void removeItem() {
+
+    }
+
+    private void createList() {
+        ingredienteList = new ArrayList<>();
+        ingredienteList.add(new Ingrediente());
+    }
+
+    private void buildRecyclerView() {
+        recyclerView = view.findViewById(R.id.myRecipesRecycler);
+        myAdapter = new RecipeIngredientsAdapter(getContext(), ingredienteList);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
+    }
+
 
     private void initComponents() {
         btn = view.findViewById(R.id.btnAddIngredient);
