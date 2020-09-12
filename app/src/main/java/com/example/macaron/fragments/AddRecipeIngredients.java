@@ -51,10 +51,6 @@ public class AddRecipeIngredients extends Fragment {
 
         btn.setOnClickListener(view -> {
             insertItem();
-//            ingredienteList.add(new Ingrediente());
-//            recyclerView.setAdapter(new RecipeIngredientsAdapter(getContext(), ingredienteList));
-//            recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
-//            System.out.println("cliquei no +");
         });
 
         btnConfirmar.setOnClickListener(view -> {
@@ -70,14 +66,14 @@ public class AddRecipeIngredients extends Fragment {
             receita.setTipo(getArguments().getInt("Tipo"));
             receita.setModo_preparo(getArguments().getString("ModoPreparo"));
 
-            myAdapter.register();
 
             Call<Receita> call = new RetrofitInitializer().setReceitaService().cadastrarReceita(receita);
             call.enqueue(new Callback<Receita>() {
                 @Override
                 public void onResponse(Call<Receita> call, Response<Receita> response) {
-
                     // dialog.hide();
+                    Receita receitaResponse = response.body();
+                    myAdapter.register(response.body().getId());
                     getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyRecipesFragment()).commit();
                 }
 
@@ -87,6 +83,7 @@ public class AddRecipeIngredients extends Fragment {
                     Log.i("testes", "deu algum erro no cadastro de receita");
                 }
             });
+
         });
 
         return view;

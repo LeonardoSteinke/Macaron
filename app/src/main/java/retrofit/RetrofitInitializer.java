@@ -1,6 +1,5 @@
 package retrofit;
 
-import model.Ingrediente;
 import retrofit2.converter.gson.GsonConverterFactory;
 import services.IngredienteReceitaService;
 import services.ReceitaService;
@@ -15,6 +14,7 @@ public class RetrofitInitializer {
 
     private String baseUrl = "https://localhost:3333";
     private String baseUrl2 = "https://macaron-ddm.herokuapp.com";
+    private String baseUrl3 = "https://192.168.0.16:3333";
 
     public RetrofitInitializer() {
         retrofit = new Retrofit.Builder()

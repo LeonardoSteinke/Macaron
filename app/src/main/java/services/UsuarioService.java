@@ -16,7 +16,10 @@ public interface UsuarioService {
     @GET("usuario/{id}")
     Call<List<Usuario>> select(@Path("id") int login);
 
-    @POST("/usuario")
+    @GET("usuario/receita/{id}")
+    Call<List<Usuario>> selectUserRecipes(@Path("id") int id);
+
+    @POST("usuario")
     Call<Usuario> SignUp(@Body Usuario usuario);
 
     @POST("usuario")

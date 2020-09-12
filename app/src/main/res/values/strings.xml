@@ -90,4 +90,14 @@
         <item>Vinagre de vinho branco</item>
         <item>Vinagre de vinho tinto</item>
     </string-array>
+
+    <string-array name="unidade_medida">
+        <item>Kg</item>
+        <item>Gramas</item>
+        <item>Litro</item>
+        <item>Militros</item>
+        <item>Xícara</item>
+        <item>Colher</item>
+        <item>Colher de chá</item>
+    </string-array>
 </resources>
