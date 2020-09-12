@@ -14,7 +14,7 @@ public class Ingrediente {
     @ColumnInfo(name = "quantidade")
     private float quantidade;
     @ColumnInfo(name = "unidadeMedida")
-    private int unidadeMedida;
+    private String unidadeMedida;
 
     public Ingrediente() {
 
@@ -32,9 +32,7 @@ public class Ingrediente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) { this.nome = nome; }
 
     public float getQuantidade() {
         return quantidade;
@@ -44,11 +42,11 @@ public class Ingrediente {
         this.quantidade = quantidade;
     }
 
-    public int getUnidadeMedida() {
+    public String getUnidadeMedida() {
         return unidadeMedida;
     }
 
-    public void setUnidadeMedida(int unidadeMedida) {
+    public void setUnidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
     }
 }
