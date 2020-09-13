@@ -1,7 +1,6 @@
 package com.example.macaron.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.macaron.R;
-import com.example.macaron.fragments.MyRecipesFragment;
 
 import java.util.List;
 
@@ -24,13 +22,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredientsAdapter.MyViewHolder> {
+public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.MyViewHolder> {
 
     Context context;
     List<Ingrediente> ingredientes;
     MyViewHolder mvh;
 
-    public RecipeIngredientsAdapter(Context ct, List<Ingrediente> ingrediente) {
+    public IngredientsAdapter(Context ct, List<Ingrediente> ingrediente) {
         context = ct;
         this.ingredientes = ingrediente;
     }
@@ -75,9 +73,16 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
 
     public void register(int id_receita) {
 
-
         for (Ingrediente ingrediente : ingredientes) {
             ingrediente.setId_receita(id_receita);
+            register(ingrediente);
+        }
+
+    }
+
+
+
+    public void register(Ingrediente ingrediente) {
 
             Call<Ingrediente> call = new RetrofitInitializer().setIngredienteReceitaService().cadastrarIngrediente(ingrediente);
             call.enqueue(new Callback<Ingrediente>() {
@@ -89,10 +94,8 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
                 @Override
                 public void onFailure(Call<Ingrediente> call, Throwable t) {
                 }
+
             });
-        }
-
-
     }
 
 
