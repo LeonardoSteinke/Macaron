@@ -9,8 +9,7 @@ public class Ingrediente {
 
     @PrimaryKey
     private int id;
-    private int id_receita;
-    private int id_usuario;
+    private int id_secundario;
     @ColumnInfo(name = "nome")
     private String ingrediente;
     @ColumnInfo(name = "unidadeMedida")
@@ -30,20 +29,12 @@ public class Ingrediente {
         this.id = id;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public int getId_secundario() {
+        return id_secundario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-    }
-
-    public int getId_receita() {
-        return id_receita;
-    }
-
-    public void setId_receita(int id_receita) {
-        this.id_receita = id_receita;
+    public void setId_secundario(int id_secundario) {
+        this.id_secundario = id_secundario;
     }
 
     public String getIngrediente() {

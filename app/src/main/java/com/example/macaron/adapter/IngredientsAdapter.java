@@ -71,10 +71,10 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         });
     }
 
-    public void register(int id_receita) {
+    public void register(int id) {
 
         for (Ingrediente ingrediente : ingredientes) {
-            ingrediente.setId_receita(id_receita);
+            ingrediente.setId_secundario(id);
             register(ingrediente);
         }
 
