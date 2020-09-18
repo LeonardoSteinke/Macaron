@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.room.Room;
 
 import com.example.macaron.R;
 import com.example.macaron.adapter.IngredientsAdapter;
 
-import model.Receita;
-import retrofit.RetrofitInitializer;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.List;
+
+import model.Usuario;
+import services.AppDatabase;
 
 public class AddUserIngredients extends AddIngredients {
 
@@ -29,6 +29,22 @@ public class AddUserIngredients extends AddIngredients {
         super.onCreateView(inflater,container,savedInstanceState);
         initComponents();
 
+        int idUser = 0;
+
+        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "dbMacaron").allowMainThreadQueries().build();
+        try {
+            List<Usuario> userList = db.usuarioDao().getAll();
+            for (Usuario user : userList) {
+                if (user != null) {
+                    idUser = user.getId();
+                    System.out.println(idUser);
+                }
+            }
+        } catch (Exception e) {
+            Log.i("testes", "deu erro no banco");
+        }
+
+
         createList();
         buildRecyclerView();
 
@@ -37,9 +53,12 @@ public class AddUserIngredients extends AddIngredients {
             insertItem();
         });
 
+        int finalIdUser = idUser;
         btnConfirmar.setOnClickListener(view -> {
 
-         //myAdapter.register();
+         myAdapter.registerUSER(finalIdUser);
+
+            getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyIngredientsFragment()).commit();
 
         });
 
@@ -63,7 +82,7 @@ public class AddUserIngredients extends AddIngredients {
     }
 
     public void initComponents() {
-        btn = view.findViewById(R.id.btnAddIngredient);
+        btn = view.findViewById(R.id.btnAddNewIngredient);
         btnConfirmar = view.findViewById(R.id.imageButton);
     }
 }

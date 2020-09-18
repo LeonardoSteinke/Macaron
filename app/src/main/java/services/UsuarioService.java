@@ -2,6 +2,7 @@ package services;
 
 import java.util.List;
 
+import model.Receita;
 import model.Usuario;
 
 import retrofit2.Call;
@@ -17,7 +18,7 @@ public interface UsuarioService {
     Call<List<Usuario>> select(@Path("id") int login);
 
     @GET("usuario/receita/{id}")
-    Call<List<Usuario>> selectUserRecipes(@Path("id") int id);
+    Call<List<Receita>> selectUserRecipes(@Path("id") int id);
 
     @POST("usuario")
     Call<Usuario> SignUp(@Body Usuario usuario);

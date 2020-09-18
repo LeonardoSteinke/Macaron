@@ -12,10 +12,13 @@ import retrofit2.http.Path;
 
 public interface IngredienteService {
 
-    @GET("ingrediente/{id}")
-    Call<Ingrediente> select(@Path("id") int id);
+    @GET("receita/ingredientes/{id}")
+    Call<List<Ingrediente>> selectReceitaIngredientes(@Path("id") int id);
 
-    @GET("ingrediente")
-    Call<List<Ingrediente>> select();
+    @GET("usuario/ingredientes/{id}")
+    Call<List<Ingrediente>> selectUsuarioIngredientes(@Path("id") int id);
+
+    @GET("receita/ingredientes")
+    Call<List<Ingrediente>> selectReceita();
 
 }

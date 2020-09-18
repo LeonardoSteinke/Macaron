@@ -89,7 +89,7 @@ public class AddRecipeIngredients extends AddIngredients {
     }
 
     public void initComponents() {
-        btn = view.findViewById(R.id.btnAddIngredient);
+        btn = view.findViewById(R.id.btnAddNewIngredient);
         btnConfirmar = view.findViewById(R.id.imageButton);
     }
 

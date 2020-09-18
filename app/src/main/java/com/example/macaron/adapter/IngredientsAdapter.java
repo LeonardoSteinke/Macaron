@@ -80,22 +80,48 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     }
 
+    private void register(Ingrediente ingrediente) {
 
+        Call<Ingrediente> call = new RetrofitInitializer().setIngredienteReceitaService().cadastrarIngrediente(ingrediente);
 
-    public void register(Ingrediente ingrediente) {
+        call.enqueue(new Callback<Ingrediente>() {
+            @Override
+            public void onResponse(Call<Ingrediente> call, Response<Ingrediente> response) {
 
-            Call<Ingrediente> call = new RetrofitInitializer().setIngredienteReceitaService().cadastrarIngrediente(ingrediente);
-            call.enqueue(new Callback<Ingrediente>() {
-                @Override
-                public void onResponse(Call<Ingrediente> call, Response<Ingrediente> response) {
+            }
 
-                }
+            @Override
+            public void onFailure(Call<Ingrediente> call, Throwable t) {
+            }
 
-                @Override
-                public void onFailure(Call<Ingrediente> call, Throwable t) {
-                }
+        });
+    }
 
-            });
+    public void registerUSER(int id) {
+
+        for (Ingrediente ingrediente : ingredientes) {
+            ingrediente.setId_secundario(id);
+            registerUSER(ingrediente);
+        }
+
+    }
+
+    private void registerUSER(Ingrediente ingrediente) {
+
+        Call<Ingrediente> call = new RetrofitInitializer().setUsuarioIngredienteService().cadastrarIngrediente(ingrediente);
+
+        call.enqueue(new Callback<Ingrediente>() {
+            @Override
+            public void onResponse(Call<Ingrediente> call, Response<Ingrediente> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Ingrediente> call, Throwable t) {
+
+            }
+
+        });
     }
 
 

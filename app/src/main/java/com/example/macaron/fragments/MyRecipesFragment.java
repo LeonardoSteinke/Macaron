@@ -1,6 +1,8 @@
 package com.example.macaron.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +13,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
+import com.example.macaron.DashboardActivity;
+import com.example.macaron.MainActivity;
 import com.example.macaron.R;
 import com.example.macaron.adapter.MyRecipesAdapter;
 
 import java.util.List;
 
 import model.Receita;
+import model.Usuario;
 import retrofit.RetrofitInitializer;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import services.AppDatabase;
 
 public class MyRecipesFragment extends Fragment {
 
@@ -42,9 +49,22 @@ public class MyRecipesFragment extends Fragment {
     }
 
     private void initComponents() {
+        int id = 0;
+        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "dbMacaron").allowMainThreadQueries().build();
+        try {
+            List<Usuario> userList = db.usuarioDao().getAll();
+            for (Usuario user : userList) {
+                if (user != null) {
+                    id = user.getId();
+                }
+            }
+        } catch (Exception e) {
+            Log.i("testes", "deu erro no banco");
+        }
+
         btn = view.findViewById(R.id.btnAddRecipe);
         recyclerView = view.findViewById(R.id.myRecipesRecycler);
-        Call<List<Receita>> call = new RetrofitInitializer().setReceitaService().select();
+        Call<List<Receita>> call = new RetrofitInitializer().setUserService().selectUserRecipes(id);
         call.enqueue(new Callback<List<Receita>>() {
             @Override
             public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
@@ -65,6 +85,7 @@ public class MyRecipesFragment extends Fragment {
             myAdapter = new MyRecipesAdapter(getContext(), receitaList);
             recyclerView.setAdapter(myAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
             myAdapter.setOnItemClickListener(new MyRecipesAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(int position) {

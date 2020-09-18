@@ -51,8 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
                         dialog.hide();
                         if (response.body().getId() != 0) {
                             AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "dbMacaron").allowMainThreadQueries().build();
-                            db.usuarioDao().insertAll(u);
-                            u.setId(response.body().getId());
+                            db.usuarioDao().insertAll(response.body());
                             Intent i = new Intent(SignUpActivity.this, DashboardActivity.class);
                             startActivity(i);
                         } else {

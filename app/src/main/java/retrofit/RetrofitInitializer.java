@@ -5,6 +5,7 @@ import services.IngredienteReceitaService;
 import services.IngredienteService;
 import services.ReceitaService;
 import services.SessionService;
+import services.UsuarioIngredienteService;
 import services.UsuarioService;
 
 import retrofit2.Retrofit;
@@ -13,7 +14,7 @@ public class RetrofitInitializer {
 
     private final Retrofit retrofit;
 
-    private String baseUrl = "https://localhost:3333";
+    private String baseUrl = "http://localhost:3333";
     private String baseUrl2 = "https://macaron-ddm.herokuapp.com";
     private String baseUrl3 = "https://192.168.0.16:3333";
 
@@ -39,5 +40,12 @@ public class RetrofitInitializer {
     public IngredienteReceitaService setIngredienteReceitaService() {
         return retrofit.create(IngredienteReceitaService.class);
     }
-    public IngredienteService setIngredienteService() { return retrofit.create(IngredienteService.class); }
+
+    public IngredienteService setIngredienteService() {
+        return retrofit.create(IngredienteService.class);
+    }
+
+    public UsuarioIngredienteService setUsuarioIngredienteService() {
+        return retrofit.create(UsuarioIngredienteService.class);
+    }
 }

@@ -20,15 +20,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgSearch"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="248dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
+        android:background="@drawable/rounded_edit_text"
+        app:layout_constraintStart_toEndOf="@+id/txtFeed"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -44,11 +44,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="377dp"
-        android:layout_height="566dp"
-        android:layout_marginStart="25dp"
+        android:id="@+id/RecyclerFeed"
+        android:layout_width="400dp"
+        android:layout_height="490dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
