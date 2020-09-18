@@ -1,19 +1,43 @@
 package model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Receita {
 
+    @PrimaryKey
+    private int id;
+    @ColumnInfo(name = "nome")
     private String nome;
+    @ColumnInfo(name = "categoria")
     private String categoria;
+    @ColumnInfo(name = "modo_preparo")
     private String modo_preparo;
+    @ColumnInfo(name = "tempo_preparo")
     private int tempo_preparo;
+    @ColumnInfo(name = "dificuldade")
     private int dificuldade;
+    @ColumnInfo(name = "porcoes")
     private int porcoes;
+    @ColumnInfo(name = "avaliacao")
     private int avaliacao;
+    @ColumnInfo(name = "tipo")
     private int tipo;
+    @ColumnInfo(name = "id_usuario")
     private int id_usuario;
 
     public Receita() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

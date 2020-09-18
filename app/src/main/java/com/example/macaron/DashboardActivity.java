@@ -1,11 +1,15 @@
 package com.example.macaron;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import com.example.macaron.fragments.FeedFragment;
 import com.example.macaron.fragments.MyIngredientsFragment;
@@ -13,12 +17,19 @@ import com.example.macaron.fragments.MyRecipesFragment;
 import com.example.macaron.fragments.PerfilFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import services.AppDatabase;
+
+import static java.security.AccessController.getContext;
+
 public class DashboardActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
+
+
 
         BottomNavigationView bottonNav = findViewById(R.id.bottom_navigation);
         bottonNav.setOnNavigationItemSelectedListener(navListener);

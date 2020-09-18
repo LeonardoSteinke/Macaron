@@ -38,4 +38,66 @@
         <item>Sem lactose</item>
         <item>Sem glútem e lactose</item>
     </string-array>
+
+    <string-array name="ingredientes">
+        <item>Alecrim</item>
+        <item>Alho</item>
+        <item>Amido de milho</item>
+        <item>Arroz</item>
+        <item>Azeite</item>
+        <item>Azeitona</item>
+        <item>Açafrão</item>
+        <item>Açúcar</item>
+        <item>Bacon</item>
+        <item>Batata</item>
+        <item>Caldo caseiro</item>
+        <item>Camarão</item>
+        <item>Cebola</item>
+        <item>Cenoura</item>
+        <item>Coxa de frango</item>
+        <item>Creme de leite</item>
+        <item>Curry</item>
+        <item>Farinha de trigo</item>
+        <item>Feijão</item>
+        <item>Filé de peixe</item>
+        <item>Filtro plástico</item>
+        <item>Guardanapo</item>
+        <item>Leite</item>
+        <item>Limão</item>
+        <item>Louro</item>
+        <item>Manteiga</item>
+        <item>Mel</item>
+        <item>Milho em lata</item>
+        <item>Molho de soja</item>
+        <item>Molho de tomate</item>
+        <item>Molho inglês</item>
+        <item>Mostarda</item>
+        <item>Noz moscada</item>
+        <item>Óleo</item>
+        <item>Ovo</item>
+        <item>Palito</item>
+        <item>Papel alumínio</item>
+        <item>Papel toalha</item>
+        <item>Peito de frango</item>
+        <item>Pimenta calabresa </item>
+        <item>Pimenta do reino branca</item>
+        <item>Pimenta do reino preta</item>
+        <item>Pimenta malagueta</item>
+        <item>Queijo</item>
+        <item>Sal</item>
+        <item>Tomate</item>
+        <item>Tomilho</item>
+        <item>Vinagre de vinho branco</item>
+        <item>Vinagre de vinho tinto</item>
+    </string-array>
+
+    <string-array name="unidade_medida">
+        <item>Kg</item>
+        <item>Gramas</item>
+        <item>Litro</item>
+        <item>Militros</item>
+        <item>Xícara</item>
+        <item>Colher</item>
+        <item>Colher de chá</item>
+    </string-array>
 </resources>

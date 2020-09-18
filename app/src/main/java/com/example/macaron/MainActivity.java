@@ -3,16 +3,23 @@ package com.example.macaron;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import java.util.List;
+
 import model.Usuario;
 import retrofit.RetrofitInitializer;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import services.AppDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +39,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         initComponents();
 
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "dbMacaron").allowMainThreadQueries().build();
+        try {
+            List<Usuario> userList = db.usuarioDao().getAll();
+            for (Usuario user : userList) {
+                if (user != null) {
+                    i = new Intent(MainActivity.this, DashboardActivity.class);
+                    startActivity(i);
+                }
+            }
+        } catch (Exception e) {
+            Log.i("testes", "deu erro no banco");
+        }
+
 
         btnSignIn.setOnClickListener(v -> {
             dialog.show();
@@ -45,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (response.body().getEmail().equalsIgnoreCase(u.getEmail())) {
                         dialog.hide();
+                        db.usuarioDao().insertAll(response.body());
                         i = new Intent(MainActivity.this, DashboardActivity.class);
                         startActivity(i);
 
