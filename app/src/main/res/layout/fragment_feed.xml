@@ -45,7 +45,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerFeed"
-        android:layout_width="400dp"
+        android:layout_width="410dp"
         android:layout_height="490dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"

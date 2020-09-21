@@ -67,12 +67,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myIngredientsRecycler"
-        android:layout_width="390dp"
+        android:layout_width="411dp"
         android:layout_height="450dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAddMyIngredient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
