@@ -22,6 +22,9 @@ public interface IngredienteReceitaService {
     @POST("/receita/ingredientes")
     Call<Ingrediente> cadastrarIngrediente(@Body Ingrediente ingrediente);
 
+    @GET("/receitas/ingredientes/{id}")
+    Call<List<Ingrediente>> searchByName(@Path("id") String ingrediente);
+
     @PUT("/receita/{id}")
     Call<Ingrediente> atualizarIngrediente(@Path("id") int id);
 

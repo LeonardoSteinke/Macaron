@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class RecipeFragment extends Fragment {
     private TextView txtCategoria;
     private TextView txtTipo;
     private TextView txtModoPreparo;
+    private ImageButton btnVoltar;
     Receita receita;
 
 
@@ -34,10 +36,17 @@ public class RecipeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_recipe, container, false);
         initComponents();
 
+        btnVoltar.setOnClickListener(view -> {
+            getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new FeedFragment()).commit();
+
+        });
+
         return view;
     }
 
     private void initComponents() {
+        btnVoltar = view.findViewById(R.id.imageButton2);
+
         receita = new Receita();
         receita.setId_usuario(getArguments().getInt("id"));
         receita.setNome(getArguments().getString("Nome"));

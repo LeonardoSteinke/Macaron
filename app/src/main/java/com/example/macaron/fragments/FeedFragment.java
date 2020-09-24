@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -27,14 +28,13 @@ import retrofit2.Response;
 
 public class FeedFragment extends Fragment {
 
-    ImageView imgSearch;
     TextView txtFeed;
 
     private View view;
     private RecyclerView recyclerView;
     private List<Receita> receitaList;
     private MyRecipesAdapter myAdapter;
-    private SearchView SV;
+    private ImageButton btnSearch;
 
 
     @Nullable
@@ -42,27 +42,17 @@ public class FeedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_feed, container, false);
         initComponents();
-        SV.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                myAdapter.getFilter().filter(s);
-                return false;
-            }
-        });
+        btnSearch.setOnClickListener(view -> getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchFragment()).commit());
 
         return view;
     }
 
     private void initComponents() {
         txtFeed = view.findViewById(R.id.txtFeed);
+        btnSearch = view.findViewById(R.id.btnSearchFeed);
 
         recyclerView = view.findViewById(R.id.RecyclerFeed);
-        SV = view.findViewById(R.id.searchView);
         Call<List<Receita>> call = new RetrofitInitializer().setReceitaService().select();
         call.enqueue(new Callback<List<Receita>>() {
             @Override
